@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\bin\Debug\Rakon.Test.Core.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\bin\Debug\Rakon.Test.Core.pdb
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\obj\Debug\Rakon.Test.Core.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\obj\Debug\Rakon.Test.Core.pdb
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\obj\Debug\Rakon.Test.Core.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test.Core\obj\Debug\Rakon.Test.Core.csproj.CoreCompileInputs.cache

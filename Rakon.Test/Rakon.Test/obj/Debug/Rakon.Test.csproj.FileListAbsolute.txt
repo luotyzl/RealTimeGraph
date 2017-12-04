@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\bin\Debug\Rakon.Test.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\bin\Debug\Rakon.Test.pdb
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\bin\Debug\Rakon.Test.Core.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\bin\Debug\Rakon.Test.Core.pdb
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\obj\Debug\Rakon.Test.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\obj\Debug\Rakon.Test.dll
+C:\Users\Administrator\Desktop\Rakon\Rakon.Test\Rakon.Test\obj\Debug\Rakon.Test.pdb

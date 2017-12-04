@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rakon.TCE", "Rakon.TCE\Rakon.TCE.csproj", "{632A7DC3-C75C-4A0B-887C-85D61D469A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rakon.Test.Core", "..\Rakon.Test.Core\Rakon.Test.Core.csproj", "{9AE84D5A-D758-4D8F-92A0-4C16A85D3814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rakon.Test", "..\Rakon.Test\Rakon.Test\Rakon.Test.csproj", "{BFFD1AE0-BC1A-40E9-BE6A-D19AFC763074}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{632A7DC3-C75C-4A0B-887C-85D61D469A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{632A7DC3-C75C-4A0B-887C-85D61D469A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{632A7DC3-C75C-4A0B-887C-85D61D469A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{632A7DC3-C75C-4A0B-887C-85D61D469A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE84D5A-D758-4D8F-92A0-4C16A85D3814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE84D5A-D758-4D8F-92A0-4C16A85D3814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE84D5A-D758-4D8F-92A0-4C16A85D3814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE84D5A-D758-4D8F-92A0-4C16A85D3814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFD1AE0-BC1A-40E9-BE6A-D19AFC763074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFD1AE0-BC1A-40E9-BE6A-D19AFC763074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFD1AE0-BC1A-40E9-BE6A-D19AFC763074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFD1AE0-BC1A-40E9-BE6A-D19AFC763074}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

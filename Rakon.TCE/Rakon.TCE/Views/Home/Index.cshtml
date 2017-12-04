@@ -1,0 +1,160 @@
+﻿@using System.Globalization
+@using Rakon.TCE.Helper
+@{
+    ViewBag.Title = "Temperature Controller Emulator";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <p class="col-lg-3">Current temperature</p>
+        <span class="col-lg-offset-3 col-lg-1" id="txtCurrentTemp">0.0</span>
+        <div class="col-lg-1">
+            <span>℃</span></div>
+    </div>
+    <div class="row">
+        <p class="col-md-3" style="text-decoration: none;" id="upIndicator">&#9650;Ramping Up</p>
+        <p class="col-md-3" style="text-decoration: none;" id="downIndicator">&#9660;Ramping Down</p>
+        <p class="col-md-3" style="text-decoration: none;" id="maintainIndicator"> &#9632;Maintaining</p>
+    </div>
+    <div class="row">
+        <p class="col-lg-3">Target temperature</p>
+        <input class="col-lg-offset-3 col-lg-1" type="text" id="TargetTemp" size="10" value="85.0" onkeyup="Num(this)"/>
+        <div class="col-lg-1">
+            <span>℃</span></div>
+    </div>
+    <div class="row">
+        <p class="col-lg-3">Ramp Rate</p>
+        <input class="col-lg-offset-3 col-lg-1" type="text" id="RampRate" size="10" value="2.2" onkeyup="Num(this)"/>
+        <div class="col-lg-1">
+            <span>℃/min</span></div>
+    </div>
+    <div class="row">
+        <p class="col-lg-3">Settling band</p>
+        <input class="col-lg-offset-3 col-lg-1" type="text" id="SettlingBand" size="10" value="0.25" onkeyup="Num(this)"/>
+        <div class="col-lg-1">
+            <span>℃</span></div>
+    </div>
+    <div class="row">
+        <p class="col-lg-3">Settling time</p>
+        <input class="col-lg-offset-3 col-lg-1" type="text" id="SettlingTime" size="10" value="5" onkeyup="Num(this)"/>
+        <div class="col-lg-1">
+            <span>min</span></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a onclick="StartRamping()" class="btn btn-primary btn-lg">&#9654; BEGIN RAMP</a>
+        </div>
+        <div class="col-lg-3">
+            <a onclick="CancelRamping()" class="btn btn-primary btn-lg">&#9632; Cancel RAMP</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div>
+@section scripts{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="~/Scripts/Temperature.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script type="text/javascript">
+        var WebSiteBaseUrl = '@Html.GetBaseUrl()';
+        var currentTemp = 25.0;
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+        Highcharts.chart('container',
+        {
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function() {
+                        $('.highcharts-credits').text('t[min]');
+                        var series = this.series[0];
+                        setInterval(function() {
+                                jQuery.ajax({
+                                    url: WebSiteBaseUrl + "Temperature/GetTemperature",
+                                    type: "get",
+                                    contenttype: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function(resp) {
+                                        var x = (new Date()).getTime(),
+                                            y = resp.Number;
+                                        displayIndicator(currentTemp, y);
+                                        currentTemp = Number(y.toFixed(2));
+                                        series.addPoint([x, currentTemp], true, true);
+                                        $('#txtCurrentTemp').text(currentTemp);
+                                    },
+                                    error: function(resp) {
+                                        var x = (new Date()).getTime(), // current time
+                                            y = currentTemp;
+                                        series.addPoint([x, y], true, true);
+                                        console.WriteLine(resp);
+                                    }
+                                });
+                            },
+                            1000);
+                    }
+                }
+            },
+            title: {
+                text: 'Temperature'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'T[℃]'
+                },
+                plotLines: [
+                    {
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }
+                ]
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>' +
+                        this.series.name +
+                        '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +
+                        '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [
+                {
+                    name: 'Temperature',
+                    data: (function() {
+                        var data = [],
+                            time = (new Date()).getTime(),
+                            i;
+
+                        for (i = -19; i <= 0; i += 1) {
+                            data.push({
+                                x: time + i * 1000,
+                                y: GetCurrentTemperature()
+                            });
+                        }
+                        return data;
+                    }())
+                }
+            ]
+        });
+    </script>
+}
